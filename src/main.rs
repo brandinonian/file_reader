@@ -11,5 +11,8 @@ fn main() {
     let path = args[1].clone();
     let contents = fs::read_to_string(path).expect("Could not read file.");
 
-    println!("{}", contents);
+    let json: serde_json::Value = serde_json::from_str(&contents).expect("Failed to parse json...");
+
+
+    println!("{}", json);
 }
